@@ -1,10 +1,11 @@
+// Imports
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 const SALT_WORK_FACTOR = 10;
 //const { rolesSchema } = require('./Roles');
 
-const usersSchema = new Schema({
+const pymeSchema = new Schema({
     first_name: {
         type: String,
         required: true,
@@ -41,7 +42,7 @@ const usersSchema = new Schema({
     ]
 });
 
-usersSchema.pre('save', function(next) {
+pymeSchema.pre('save', function(next) {
     const user = this;
 
     // only hash the password if it has been modified (or is new)
