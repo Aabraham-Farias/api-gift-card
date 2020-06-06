@@ -6,63 +6,66 @@ const SALT_WORK_FACTOR = 10;
 //const { rolesSchema } = require('./Roles');
 
 const pymeSchema = new Schema({
-    first_name: {
-        type: String,
-        required: true,
+    nombreNegocio:{
+        type:String,
+        required:true
     },
-    last_name: {
-        type: String,
-        required: true,
+    giro:{
+        type:String,
+        required:true
     },
-    email: {
-        type: String,
-        required: true,
-        unique: true,
+    password:{
+        type:String,
+        required:true
     },
-    is_active: {
-        type: Boolean,
-        default: true,
+    giftCardEmitidas:[{type:mongoose.Schema.Types.ObjectId,ref:'gifcard'}],
+    tiempoPlazoUso:{
+        type:Date,
+        required:true
     },
-    password: {
-        type: String,
+    monto:{
+        type:Number,
+        default:0
     },
-    profile_img: {
-        type: String,
+    correo:{
+        type:String,
+        required:true
     },
-    cart: {
-        type: Array,
-        default: []
+    direccion:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'direccion'
     },
-    history: {
-        type: Array,
-        default: []
+    telefono:{
+        type:String,
+        required:true
     },
-    product: [
-        { type: Schema.Types.ObjectId, ref: 'Products' }
-    ]
+    responsable:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'responsable'
+    }
 });
 
 pymeSchema.pre('save', function(next) {
-    const user = this;
+    const pyme = this;
 
     // only hash the password if it has been modified (or is new)
-    if (!user.isModified('password')) return next();
+    if (!pyme.isModified('password')) return next();
 
     // generate a salt
-    bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+    bcrypt.genSalt(SALT_WORK_FACTOR,(err, salt)=>{
         if (err) return next(err);
 
         // hash the password using our new salt
-        bcrypt.hash(user.password, salt, function(err, hash) {
+        bcrypt.hash(user.password, salt,(err, hash)=>{
             if (err) return next(err);
 
             // override the cleartext password with the hashed one
-            user.password = hash;
+            pyme.password = hash;
             next();
         });
     });
 });
 
-const Users = mongoose.model('User', usersSchema);
+const pymeModel = mongoose.model('pyme',pymeSchema);
 
-module.exports = Users;
+module.exports = pymeModel;
