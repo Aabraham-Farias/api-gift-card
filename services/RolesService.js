@@ -8,5 +8,5 @@ module.exports = {
   update: (role, body) => {
     Object.assign(role, body);
     return role;
-  }
-}
+  },
+};

@@ -4,8 +4,8 @@ const ProductsController = require('./ProductsController');
 const AddtocartController = require('./AddtocartController');
 
 module.exports = {
-    UsersController,
-    RolesController,
-    ProductsController,
-    AddtocartController,
-}
+  UsersController,
+  RolesController,
+  ProductsController,
+  AddtocartController,
+};
