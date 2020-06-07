@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const { AddressesService } = require('../services');
 const utils = require('../utils');
 
