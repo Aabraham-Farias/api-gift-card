@@ -8,7 +8,7 @@ module.exports = {
       const addresses = await AddressesService.create(req.body);
       res.status(201).send(addresses);
     } catch (error) {
-      res.status(400).send({ message: 'Error creating addresses' });
+      res.status(400).send({ message: 'Error creating address...' });
     }
   },
   find: async (req, res) => {
@@ -16,7 +16,7 @@ module.exports = {
       const addresses = await AddressesService.find();
       res.status(200).send(addresses);
     } catch (error) {
-      res.status(404).send({ message: 'Addresses not found', error });
+      res.status(404).send({ message: 'Address not found...', error });
     }
   },
   findById: async (req, res) => {
@@ -25,7 +25,7 @@ module.exports = {
       const addresses = await AddressesService.findById(id);
       res.status(200).send(addresses);
     } catch (error) {
-      res.status(404).send({ message: 'Product not found', error });
+      res.status(404).send({ message: 'Address not found...', error });
     }
   },
   findByIdAndUpdate: async (req, res) => {
@@ -33,11 +33,11 @@ module.exports = {
     const { body } = req;
 
     try {
-      const addresses = await AddressesService.findByIdAndUpdate(id);
-      const AddressesInfo = await AddressesService.update(addresses, body);
+      const address = await AddressesService.findById(id);
+      const AddressesInfo = await AddressesService.update(address, body);
       res.status(200).send(AddressesInfo);
     } catch (error) {
-      res.status(404).send({ message: 'Product no found', error });
+      res.status(404).send({ message: 'Address no found...', error });
     }
   },
   findByIdAndDelete: async (req, res) => {
@@ -48,7 +48,7 @@ module.exports = {
       await AddressesService.update(addresses, { is_active: false });
       res.status(204).send();
     } catch (error) {
-      res.status(404).send({ message: 'Error deleting addresses' });
+      res.status(404).send({ message: 'Error deleting address...' });
     }
   },
 };
