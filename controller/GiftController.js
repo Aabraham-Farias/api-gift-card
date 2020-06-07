@@ -1,4 +1,4 @@
-const { UsersService, GiftService } = require('../services');
+const { PymeService, GiftService } = require('../services');
 
 module.exports = {
     create: async(req, res) => {
@@ -45,6 +45,21 @@ module.exports = {
             res.status(204).send();
         } catch (err) {
             res.status(404).send({ message: 'Error deleting giftcard', err });
+        }
+    },
+    addGiftcardtoPyme: async(req, res) => {
+        const { id } = req.params;
+        const { idGiftcard } = req.body;
+        try {
+            const pyme = await PymeService.findById(id);
+            console.log(pyme);
+            const giftcard = await GiftService.findById(idGiftcard);
+            console.log(giftcard);
+            if (!giftcard) res.status(404).send({ message: 'giftcard not found' });
+            res.status(201).send("Vas bien")
+        } catch (err) {
+            console.log(err);
+            res.status(400).send({ message: 'Error adding giftcard to pyme', err });
         }
     },
 }

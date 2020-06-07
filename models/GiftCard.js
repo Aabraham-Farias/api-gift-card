@@ -21,9 +21,10 @@ const giftCardSchema = mongoose.Schema({
     fechavencimiento: {
         type: String,
     },
-    pyme: [
-        { type: Schema.Types.ObjectId, ref: 'Pyme' }
-    ],
+    pyme: {
+        type: Schema.Types.ObjectId,
+        ref: 'Pyme'
+    },
 })
 
 const GiftCard = mongoose.model('GiftCard', giftCardSchema);

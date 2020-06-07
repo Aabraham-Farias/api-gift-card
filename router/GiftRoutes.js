@@ -10,4 +10,7 @@ router.get('/giftcards/:id', GiftController.findById);
 router.patch('/giftcards/:id', GiftController.findByIdAndUpdate);
 router.delete('/giftcards/:id', GiftController.findByIdAndDelete);
 
+
+router.post('/pymes/:id/giftcards', GiftController.addGiftcardtoPyme);
+
 module.exports = router;
