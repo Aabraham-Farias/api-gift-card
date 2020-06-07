@@ -24,4 +24,10 @@ module.exports = {
         console.log(`id del gitfcart:${idGetcart}`);
         return idGetcart;
     },
+    updateAmount: (pyme, amount) => {
+      const pymeAmount = pyme.monto;
+      const newPymeTotalAmount = pymeAmount + amount;
+      pyme.monto = newPymeTotalAmount;
+      return pyme.save();
+    },
 }

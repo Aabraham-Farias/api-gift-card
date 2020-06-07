@@ -57,7 +57,8 @@ module.exports = {
             console.log(giftcard);
             if (!giftcard) res.status(404).send({ message: 'giftcard not found' });
             const pymeWithGiftCard = await PymeService.addGiftcard(pyme, giftcard);
-            res.status(201).json(pymeWithGiftCard);
+            const pymeWithUpdatedAmount = await PymeService.updateAmount(pymeWithGiftCard, giftcard.monto);
+            res.status(201).json(pymeWithUpdatedAmount);
         } catch (err) {
             console.log(err);
             res.status(400).send({ message: 'Error adding giftcard to pyme', err });
