@@ -5,6 +5,7 @@ const AddtocartController = require('./AddtocartController');
 const AddressesController = require('./AddressesController');
 const PymeController = require('./PymeController');
 const GiftController = require('./GiftController');
+const TransferController = require('./TransferController');
 
 module.exports = {
     UsersController,
@@ -14,4 +15,5 @@ module.exports = {
     AddressesController,
     PymeController,
     GiftController,
+    TransferController,
 };
