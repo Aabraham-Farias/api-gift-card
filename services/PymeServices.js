@@ -1,5 +1,4 @@
 const Pyme = require('../models/Pyme');
-const bcrypt = require('bcrypt');
 
 module.exports = {
     create: (body) => {
@@ -14,8 +13,8 @@ module.exports = {
         return user.save();
     },
     addGiftcard: (pyme, giftcard) => {
-        pyme.giftcard.push(giftcard._id);
-        return user.save();
+        pyme.gifcard.push(giftcard._id);
+        return pyme.save();
     },
     findGiftcard: (pyme, getcart) => {
         const idGetcart = getcart._id;

@@ -56,7 +56,8 @@ module.exports = {
             const giftcard = await GiftService.findById(idGiftcard);
             console.log(giftcard);
             if (!giftcard) res.status(404).send({ message: 'giftcard not found' });
-            res.status(201).send("Vas bien")
+            const pymeWithGiftCard = await PymeService.addGiftcard(pyme, giftcard);
+            res.status(201).json(pymeWithGiftCard);
         } catch (err) {
             console.log(err);
             res.status(400).send({ message: 'Error adding giftcard to pyme', err });
