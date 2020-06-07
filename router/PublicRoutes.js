@@ -7,6 +7,6 @@ router.use(require('./AddtocarRouter'));
 router.use(require('./AddressesRoutes'));
 router.use(require('./PymeRoutes'));
 router.use(require('./GiftRoutes'));
-router.user(require('./TransferRouter'));
+router.use(require('./TransferRouter'));
 
 module.exports = router;
