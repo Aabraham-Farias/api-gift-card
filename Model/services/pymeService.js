@@ -1,4 +1,6 @@
-const Users = require('../models/Users');
+// Model
+const pymeModel = require('../models/Users');
+// Encrypt
 const bcrypt = require('bcrypt');
 
 module.exports = {

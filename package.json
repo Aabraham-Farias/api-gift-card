@@ -2,10 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "../server/index.js",
   "scripts": {
-    "start": "NODE_ENV=production node index.js",
-    "dev": "NODE_ENV=staging nodemon index.js",
+    "start": "SET NODE_ENV=production&& node server/index.js",
     "test": "NODE_ENV=test jest --verbose --detectOpenHandles ./test --watchAll"
   },
   "author": "",

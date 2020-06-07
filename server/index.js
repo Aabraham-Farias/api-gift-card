@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const server = express();
 const cors = require('cors');
@@ -16,9 +17,10 @@ server.use(cors());
 // Endpoints
 server.get('/', (req, res) => res.send('Hello World!'));
 
-server.use('/api/v1', require('../router'));
+server.use('/api', require('../Views/routes'));
 
 server.use(errors());
 
-// exportar server para poder requerirlo desde otros archivos
-module.exports = { server, PORT };
+require('../database');
+
+server.listen(PORT,()=>console.log(`Levantado en${PORT}`));
