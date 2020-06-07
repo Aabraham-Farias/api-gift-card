@@ -22,7 +22,7 @@ module.exports = {
         const getPyme = pyme;
         console.log('✅', pyme);
         console.log('✅', getPyme);
-        console.log(`id del product:${idGetcart}`);
+        console.log(`id del gitfcart:${idGetcart}`);
         return idGetcart;
     },
 }
